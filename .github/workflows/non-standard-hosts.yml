@@ -7,6 +7,13 @@ jobs:
   curl-non-standard-hosts:
     runs-on: ubuntu-latest
     steps:
+      # ============= InvisiRisk Setup =============
+      - name: Setup PSE
+        uses: invisirisk/pse-action@latest
+        with:
+          api_url: "https://app.stage.invisirisk.com"
+          app_token: ${{secrets.IR_API_KEY_NSH}}
+      # ============= InvisiRisk Setup End =============
       - name: Curl Non-Standard Hosts
         run: |
           curl -s --max-time 5 -o /dev/null https://test.pypi.org
@@ -30,3 +37,10 @@ jobs:
           curl -s --max-time 5 -o /dev/null https://pypi-mirror.ru || true
           curl -s --max-time 5 -o /dev/null https://npm-unofficial.net || true
           curl -s --max-time 5 -o /dev/null https://maven-unofficial.org || true
+      # ============= InvisiRisk Cleanup =============
+      - name: Cleanup PSE
+        if: always()
+        uses: invisirisk/pse-action@latest
+        with:
+          cleanup: "true"
+      # ============= InvisiRisk Cleanup End =============
