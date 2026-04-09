@@ -16,13 +16,13 @@ jobs:
       # ============= InvisiRisk Setup End =============
       - name: Curl Non-Standard Hosts
         run: |
-          curl -s --max-time 5 -o /dev/null https://test.pypi.org
-          curl -s --max-time 5 -o /dev/null https://test-files.pythonhosted.org
-          curl -s --max-time 5 -o /dev/null https://api.veribom.com
-          curl -s --max-time 5 -o /dev/null https://vbirmock.free.beeceptor.com
-          curl -s --max-time 5 -o /dev/null https://package-registry.free.beeceptor.com
-          curl -s --max-time 5 -o /dev/null https://httpbin.org
-          curl -s --max-time 5 -o /dev/null https://httpbin.io
+          curl -s --max-time 5 -o /dev/null https://test.pypi.org || true
+          curl -s --max-time 5 -o /dev/null https://test-files.pythonhosted.org || true
+          curl -s --max-time 5 -o /dev/null https://api.veribom.com || true
+          curl -s --max-time 5 -o /dev/null https://vbirmock.free.beeceptor.com || true
+          curl -s --max-time 5 -o /dev/null https://package-registry.free.beeceptor.com || true
+          curl -s --max-time 5 -o /dev/null https://httpbin.org || true
+          curl -s --max-time 5 -o /dev/null https://httpbin.io || true
           curl -s --max-time 5 -o /dev/null https://internal-registry.company.local || true
           curl -s --max-time 5 -o /dev/null https://my-private-pypi.internal || true
           curl -s --max-time 5 -o /dev/null https://artifactory.internal.corp || true
