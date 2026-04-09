@@ -1,4 +1,4 @@
-name: Standard Hosts Curl
+name: Mixed Hosts Curl
 
 on:
   workflow_dispatch:
