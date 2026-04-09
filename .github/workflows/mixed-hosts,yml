@@ -1,0 +1,155 @@
+name: Standard Hosts Curl
+
+on:
+  workflow_dispatch:
+
+jobs:
+  curl-standard-hosts:
+    runs-on: ubuntu-latest
+    steps:
+      # ============= InvisiRisk Setup =============
+      - name: Setup PSE
+        uses: invisirisk/pse-action@latest
+        with:
+          api_url: "https://app.stage.invisirisk.com"
+          app_token: ${{secrets.IR_API_KEY_MH}}
+      # ============= InvisiRisk Setup End =============      
+      - name: Curl Standard Hosts
+        run: |
+          set +e
+           # ---Standard Hosts ---
+          curl -s --max-time 5 -o /dev/null https://files.pythonhosted.org || true
+          curl -s --max-time 5 -o /dev/null https://pypi.org || true
+          curl -s --max-time 5 -o /dev/null https://results-receiver.actions.githubusercontent.com || true
+          curl -s --max-time 5 -o /dev/null https://github.com || true
+          curl -s --max-time 5 -o /dev/null https://api.github.com || true
+          curl -s --max-time 5 -o /dev/null https://raw.githubusercontent.com || true
+          curl -s --max-time 5 -o /dev/null https://codeload.github.com || true
+          curl -s --max-time 5 -o /dev/null https://objects.githubusercontent.com || true
+          curl -s --max-time 5 -o /dev/null https://www.w3.org || true
+          curl -s --max-time 5 -o /dev/null https://repo.maven.apache.org || true
+          curl -s --max-time 5 -o /dev/null https://repo.eclipse.org || true
+          curl -s --max-time 5 -o /dev/null https://repo1.maven.org || true
+          curl -s --max-time 5 -o /dev/null https://central.maven.org || true
+          curl -s --max-time 5 -o /dev/null https://plugins.gradle.org || true
+          curl -s --max-time 5 -o /dev/null https://services.gradle.org || true
+          curl -s --max-time 5 -o /dev/null https://downloads.gradle.org || true
+          curl -s --max-time 5 -o /dev/null https://api.osv.dev || true
+          curl -s --max-time 5 -o /dev/null https://proxy.golang.org || true
+          curl -s --max-time 5 -o /dev/null https://vuln.go.dev || true
+          curl -s --max-time 5 -o /dev/null https://api.deps.dev || true
+          curl -s --max-time 5 -o /dev/null https://dl.google.com || true
+          curl -s --max-time 5 -o /dev/null https://osv-vulnerabilities.storage.googleapis.com || true
+          curl -s --max-time 5 -o /dev/null https://storage.googleapis.com || true
+          curl -s --max-time 5 -o /dev/null https://registry.npmjs.org || true
+          curl -s --max-time 5 -o /dev/null https://sum.golang.org || true
+          curl -s --max-time 5 -o /dev/null https://gvisor.dev || true
+          curl -s --max-time 5 -o /dev/null https://index.rubygems.org || true
+          curl -s --max-time 5 -o /dev/null https://rubygems.org || true
+          curl -s --max-time 5 -o /dev/null https://nodejs.org || true
+          curl -s --max-time 5 -o /dev/null https://api.nuget.org || true
+          curl -s --max-time 5 -o /dev/null https://nuget.org || true
+          curl -s --max-time 5 -o /dev/null https://dc.services.visualstudio.com || true
+          curl -s --max-time 5 -o /dev/null https://builds.dotnet.microsoft.com || true
+          curl -s --max-time 5 -o /dev/null https://ci.dot.net || true
+          curl -s --max-time 5 -o /dev/null https://aka.ms || true
+          curl -s --max-time 5 -o /dev/null https://download.visualstudio.microsoft.com || true
+          curl -s --max-time 5 -o /dev/null https://dotnetcli.azureedge.net || true
+          curl -s --max-time 5 -o /dev/null https://productionresultssa6.blob.core.windows.net || true
+          curl -s --max-time 5 -o /dev/null https://productionresultssa19.blob.core.windows.net || true
+          curl -s --max-time 5 -o /dev/null https://hosted-compute-watchdog-prod-eus-01.githubapp.com || true
+          curl -s --max-time 5 -o /dev/null https://hosted-compute-watchdog-prod-iad-01.githubapp.com || true
+          curl -s --max-time 5 -o /dev/null https://hosted-compute-watchdog-prod-iad-02.githubapp.com || true
+          curl -s --max-time 5 -o /dev/null https://pipelines.actions.githubusercontent.com || true
+          curl -s --max-time 5 -o /dev/null https://vstoken.actions.githubusercontent.com || true
+          curl -s --max-time 5 -o /dev/null https://api.snapcraft.io || true
+          curl -s --max-time 5 -o /dev/null https://packages.microsoft.com || true
+          curl -s --max-time 5 -o /dev/null https://archive.ubuntu.com || true
+          curl -s --max-time 5 -o /dev/null https://security.ubuntu.com || true
+          curl -s --max-time 5 -o /dev/null https://deb.debian.org || true
+          curl -s --max-time 5 -o /dev/null https://security.debian.org || true
+          curl -s --max-time 5 -o /dev/null https://registry-1.docker.io || true
+          curl -s --max-time 5 -o /dev/null https://auth.docker.io || true
+          curl -s --max-time 5 -o /dev/null https://mcr.microsoft.com || true
+          curl -s --max-time 5 -o /dev/null https://ghcr.io || true
+          curl -s --max-time 5 -o /dev/null https://quay.io || true
+          curl -s --max-time 5 -o /dev/null https://gcr.io || true
+          curl -s --max-time 5 -o /dev/null https://registry.k8s.io || true
+          curl -s --max-time 5 -o /dev/null https://cdn.jsdelivr.net || true
+          curl -s --max-time 5 -o /dev/null https://unpkg.com || true
+           # --- Non-Standards Hosts ---
+          curl -s --max-time 5 -o /dev/null https://test.pypi.org || true
+          curl -s --max-time 5 -o /dev/null https://test-files.pythonhosted.org || true
+          curl -s --max-time 5 -o /dev/null https://api.veribom.com || true
+          curl -s --max-time 5 -o /dev/null https://vbirmock.free.beeceptor.com || true
+          curl -s --max-time 5 -o /dev/null https://package-registry.free.beeceptor.com || true
+          curl -s --max-time 5 -o /dev/null https://httpbin.org || true
+          curl -s --max-time 5 -o /dev/null https://httpbin.io || true
+          curl -s --max-time 5 -o /dev/null https://internal-registry.company.local || true
+          curl -s --max-time 5 -o /dev/null https://my-private-pypi.internal || true
+          curl -s --max-time 5 -o /dev/null https://artifactory.internal.corp || true
+          curl -s --max-time 5 -o /dev/null https://nexus.internal.corp || true
+          curl -s --max-time 5 -o /dev/null https://private-npm.mycompany.com || true
+          curl -s --max-time 5 -o /dev/null https://custom-maven.myorg.net || true
+          curl -s --max-time 5 -o /dev/null https://mirror.custom-registry.io || true
+          curl -s --max-time 5 -o /dev/null https://packages.internal.dev || true
+          curl -s --max-time 5 -o /dev/null https://staging-pypi.example.com || true
+          curl -s --max-time 5 -o /dev/null https://dev-registry.example.org || true
+          curl -s --max-time 5 -o /dev/null https://custom-pip-mirror.io || true          
+          curl -s --max-time 5 -o /dev/null https://pypi-mirror.ru || true
+          curl -s --max-time 5 -o /dev/null https://npm-unofficial.net || true
+          curl -s --max-time 5 -o /dev/null https://maven-unofficial.org || true
+          # --- typosquatting / lookalike domains ---
+          curl -s --max-time 5 -o /dev/null https://pypl.org || true
+          curl -s --max-time 5 -o /dev/null https://githubb.com || true
+          curl -s --max-time 5 -o /dev/null https://npmjs.com.packages.io || true
+          curl -s --max-time 5 -o /dev/null https://registry.npmjs.org.cdn-deliver.net || true
+          curl -s --max-time 5 -o /dev/null https://pypi.org.mirror-fast.com || true
+          curl -s --max-time 5 -o /dev/null https://rubygems.org.mirror.io || true
+          curl -s --max-time 5 -o /dev/null https://maven.apache.org.repo-cache.net || true
+          curl -s --max-time 5 -o /dev/null https://github.com.cdn-assets.net || true
+          # --- suspicious / exfil-looking domains ---
+          curl -s --max-time 5 -o /dev/null https://data-collect.telemetry-hub.io || true
+          curl -s --max-time 5 -o /dev/null https://log-upload.analytics-pipe.com || true
+          curl -s --max-time 5 -o /dev/null https://metrics.build-tracker.xyz || true
+          curl -s --max-time 5 -o /dev/null https://events.devtelemetry.net || true
+          curl -s --max-time 5 -o /dev/null https://upload.crash-report.io || true
+          curl -s --max-time 5 -o /dev/null https://beacon.ci-stats.dev || true
+          curl -s --max-time 5 -o /dev/null https://exfil.notmalware.xyz || true
+          curl -s --max-time 5 -o /dev/null https://c2.totally-legit-updates.com || true
+          # --- geo-specific / unusual TLD mirrors ---
+          curl -s --max-time 5 -o /dev/null https://pypi-cn.mirror.net.cn || true
+          curl -s --max-time 5 -o /dev/null https://npm.taobao.org || true
+          curl -s --max-time 5 -o /dev/null https://mirrors.aliyun.com || true
+          curl -s --max-time 5 -o /dev/null https://repo.huaweicloud.com || true
+          curl -s --max-time 5 -o /dev/null https://pypi.doubanio.com || true
+          curl -s --max-time 5 -o /dev/null https://npm.elemecdn.com || true
+          # --- credential/token harvest lookalikes ---
+          curl -s --max-time 5 -o /dev/null https://auth.login-portal.io || true
+          curl -s --max-time 5 -o /dev/null https://sso.internal-auth.company.net || true
+          curl -s --max-time 5 -o /dev/null https://token-refresh.devops-pipeline.com || true
+          curl -s --max-time 5 -o /dev/null https://oauth.build-service.internal || true
+          # --- random/DGA-looking domains ---
+          curl -s --max-time 5 -o /dev/null https://xf3k2p.packages.delivery || true
+          curl -s --max-time 5 -o /dev/null https://a7bcq91.cdn-static.net || true
+          curl -s --max-time 5 -o /dev/null https://pkg-dl.z9m2x.workers.dev || true
+          curl -s --max-time 5 -o /dev/null https://d1kzrt.cloudfront-cdn.io || true
+          # --- private/internal-looking registries ---
+          curl -s --max-time 5 -o /dev/null https://docker.internal.mycompany.io || true
+          curl -s --max-time 5 -o /dev/null https://registry.prod.internal.corp || true
+          curl -s --max-time 5 -o /dev/null https://helm.charts.internal.dev || true
+          curl -s --max-time 5 -o /dev/null https://pip.internal.eng.corp || true
+          curl -s --max-time 5 -o /dev/null https://gems.internal.ruby.corp || true
+          curl -s --max-time 5 -o /dev/null https://nuget.internal.dotnet.local || true
+          # --- supply chain attack lookalikes ---
+          curl -s --max-time 5 -o /dev/null https://node-packages.supply-cdn.com || true
+          curl -s --max-time 5 -o /dev/null https://pip-packages.fast-mirror.dev || true
+          curl -s --max-time 5 -o /dev/null https://maven-central.cache-proxy.net || true
+          curl -s --max-time 5 -o /dev/null https://gradle-plugins.build-cache.io || true
+      # ============= InvisiRisk Cleanup =============
+      - name: Cleanup PSE
+        if: always()
+        uses: invisirisk/pse-action@latest
+        with:
+          cleanup: "true"
+      # ============= InvisiRisk Cleanup End =============
