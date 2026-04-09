@@ -1,0 +1,32 @@
+name: Non-Standard Hosts Curl
+
+on:
+  workflow_dispatch:
+
+jobs:
+  curl-non-standard-hosts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl Non-Standard Hosts
+        run: |
+          curl -s --max-time 5 -o /dev/null https://test.pypi.org
+          curl -s --max-time 5 -o /dev/null https://test-files.pythonhosted.org
+          curl -s --max-time 5 -o /dev/null https://api.veribom.com
+          curl -s --max-time 5 -o /dev/null https://vbirmock.free.beeceptor.com
+          curl -s --max-time 5 -o /dev/null https://package-registry.free.beeceptor.com
+          curl -s --max-time 5 -o /dev/null https://httpbin.org
+          curl -s --max-time 5 -o /dev/null https://httpbin.io
+          curl -s --max-time 5 -o /dev/null https://internal-registry.company.local || true
+          curl -s --max-time 5 -o /dev/null https://my-private-pypi.internal || true
+          curl -s --max-time 5 -o /dev/null https://artifactory.internal.corp || true
+          curl -s --max-time 5 -o /dev/null https://nexus.internal.corp || true
+          curl -s --max-time 5 -o /dev/null https://private-npm.mycompany.com || true
+          curl -s --max-time 5 -o /dev/null https://custom-maven.myorg.net || true
+          curl -s --max-time 5 -o /dev/null https://mirror.custom-registry.io || true
+          curl -s --max-time 5 -o /dev/null https://packages.internal.dev || true
+          curl -s --max-time 5 -o /dev/null https://staging-pypi.example.com || true
+          curl -s --max-time 5 -o /dev/null https://dev-registry.example.org || true
+          curl -s --max-time 5 -o /dev/null https://custom-pip-mirror.io || true
+          curl -s --max-time 5 -o /dev/null https://pypi-mirror.ru || true
+          curl -s --max-time 5 -o /dev/null https://npm-unofficial.net || true
+          curl -s --max-time 5 -o /dev/null https://maven-unofficial.org || true
