@@ -13,9 +13,10 @@ jobs:
         with:
           api_url: "https://app.stage.invisirisk.com"
           app_token: ${{secrets.IR_API_KEY_SH}}
-      # ============= InvisiRisk Setup End =============
+      # ============= InvisiRisk Setup End =============      
       - name: Curl Standard Hosts
-        run: |          
+        run: |
+          set +e
           curl -s --max-time 5 -o /dev/null https://files.pythonhosted.org || true
           curl -s --max-time 5 -o /dev/null https://pypi.org || true
           curl -s --max-time 5 -o /dev/null https://results-receiver.actions.githubusercontent.com || true
