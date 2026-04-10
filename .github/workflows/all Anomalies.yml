@@ -12,7 +12,7 @@ jobs:
         uses: invisirisk/pse-action@latest
         with:
           api_url: "https://app.stage.invisirisk.com"
-          app_token: ${{secrets.IR_API_KEY_MH}}
+          app_token: ${{secrets.IR_API_KEY_AA}}
       # ============= InvisiRisk Setup End =============      
       - name: Curl Standard Hosts
         run: |
